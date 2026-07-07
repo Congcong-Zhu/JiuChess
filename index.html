@@ -1,46 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>下载久棋 (JiuChess)</title>
     <style>
-        body {
-            font-family: 'Microsoft YaHei', sans-serif;
-            text-align: center;
-            background-color: #f4f4f9;
-            margin-top: 100px;
+        /* 基础重置 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
-        h1 {
+        
+        /* 页面整体背景与排版 */
+        body {
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+            /* 浅蓝色渐变背景，更具现代感 */
+            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             color: #333;
         }
-        p {
-            color: #666;
-            margin-bottom: 30px;
+        
+        /* 中央卡片设计 */
+        .card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 50px 40px;
+            max-width: 480px;
+            width: 90%;
+            /* 添加柔和的阴影 */
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: transform 0.3s ease;
         }
+        
+        /* 卡片悬浮时的微小跳动效果 */
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* 标题与版本号 */
+        .logo-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        h1 {
+            font-size: 28px;
+            color: #1a202c;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+        .version {
+            display: inline-block;
+            background: #edf2f7;
+            color: #4a5568;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        /* 游戏简介 */
+        p.desc {
+            color: #718096;
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+        
+        /* 游戏特色标签 */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 35px;
+        }
+        .feature-tag {
+            background: #ebf8ff;
+            color: #3182ce;
+            font-size: 13px;
+            padding: 6px 14px;
+            border-radius: 6px;
+            font-weight: 500;
+        }
+
+        /* 现代化的下载按钮 */
         .download-btn {
-            padding: 15px 40px;
-            font-size: 20px;
-            background-color: #2ea44f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            /* 绿色渐变按钮 */
+            background: linear-gradient(135deg, #2ea44f 0%, #22863a 100%);
             color: white;
-            border: none;
-            border-radius: 8px;
-            cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.3s;
+            padding: 16px 32px;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(46, 164, 79, 0.3);
+            transition: all 0.3s ease;
         }
+        
+        /* 按钮悬浮时的发光与放大效果 */
         .download-btn:hover {
-            background-color: #2c974b;
+            background: linear-gradient(135deg, #32b356 0%, #279b43 100%);
+            box-shadow: 0 12px 25px rgba(46, 164, 79, 0.4);
+            transform: translateY(-2px);
+        }
+        
+        /* 按钮内部的下载图标 */
+        .download-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: currentColor;
+        }
+
+        /* 底部信息 */
+        .footer-text {
+            margin-top: 25px;
+            font-size: 12px;
+            color: #a0aec0;
         }
     </style>
 </head>
 <body>
 
-    <h1>欢迎下载久棋 (JiuChess)</h1>
-    <p>点击下方按钮获取最新 Windows 版本的游戏压缩包：</p>
-    
-    <a href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v1.0/JIUChess.zip" download>
-        <button class="download-btn">下载游戏 (Windows)</button>
-    </a>
+    <div class="card">
+        <!-- 你可以将这里的 emoji 替换成你游戏真实的 Logo 图片 -->
+        <div class="logo-icon">♟️</div>
+        
+        <h1>久棋 (JiuChess)</h1>
+        <div class="version">v1.0 最新版</div>
+        
+        <p class="desc">一款基于 Unity3D 与 C# 开发的藏式棋类平台，带给你原汁原味的博弈体验。</p>
+        
+        <div class="features">
+            <span class="feature-tag">人人对弈</span>
+            <span class="feature-tag">人机对战</span>
+            <span class="feature-tag">AI对弈</span>
+        </div>
+        
+        <!-- 下载链接已保留你提供的内容 -->
+        <a href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v1.0/JIUChess.zip" class="download-btn" download>
+            <!-- SVG 格式的下载小图标 -->
+            <svg viewBox="0 0 24 24">
+                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+            </svg>
+            下载游戏 (Windows)
+        </a>
+        
+        <div class="footer-text">
+            支持 Windows 系统 • 免费开源
+        </div>
+    </div>
 
 </body>
 </html>
