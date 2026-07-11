@@ -15,7 +15,6 @@
         /* 页面整体背景与排版 */
         body {
             font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            /*浅蓝色渐变背景*/
             background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
             min-height: 100vh;
             display: flex;
@@ -31,13 +30,11 @@
             padding: 50px 40px;
             max-width: 480px;
             width: 90%;
-            /* 添加柔和的阴影 */
             box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
             text-align: center;
             transition: transform 0.3s ease;
         }
         
-        /* 卡片悬浮时的微小跳动效果 */
         .card:hover {
             transform: translateY(-5px);
         }
@@ -89,13 +86,19 @@
             font-weight: 500;
         }
 
-        /* 现代化的下载按钮 */
+        /* 按钮组容器：让多个按钮上下整齐排列 */
+        .btn-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        /* 现代化的下载按钮 (日常体验版 - 绿色) */
         .download-btn {
             display: flex;
             align-items: center;
             justify-content: center;
             gap: 10px;
-            /* 绿色渐变按钮 */
             background: linear-gradient(135deg, #2ea44f 0%, #22863a 100%);
             color: white;
             text-decoration: none;
@@ -107,11 +110,21 @@
             transition: all 0.3s ease;
         }
         
-        /* 按钮悬浮时的发光与放大效果 */
         .download-btn:hover {
             background: linear-gradient(135deg, #32b356 0%, #279b43 100%);
             box-shadow: 0 12px 25px rgba(46, 164, 79, 0.4);
             transform: translateY(-2px);
+        }
+
+        /* 赛事专用版按钮 (蓝色，突出专业感) */
+        .download-btn.competition {
+            background: linear-gradient(135deg, #3182ce 0%, #2b6cb0 100%);
+            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.3);
+        }
+
+        .download-btn.competition:hover {
+            background: linear-gradient(135deg, #4299e1 0%, #2c5282 100%);
+            box-shadow: 0 12px 25px rgba(49, 130, 206, 0.4);
         }
         
         /* 按钮内部的下载图标 */
@@ -132,18 +145,14 @@
 <body>
 
     <div class="card">
-        <!-- 你可以将这里的 emoji 替换成你游戏真实的 Logo 图片 -->
         <div class="logo-icon" style="display: flex; justify-content: center; gap: 10px; align-items: center;">
-    <!-- 纯黑围棋子 -->
-    <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="11" fill="#000000" />
-    </svg>
-    
-    <!-- 纯白围棋子 (带细微灰边以防看不清) -->
-    <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="12" cy="12" r="11" fill="#ffffff" stroke="#d1d5db" stroke-width="1" />
-    </svg>
-</div>
+            <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" fill="#000000" />
+            </svg>
+            <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="12" cy="12" r="11" fill="#ffffff" stroke="#d1d5db" stroke-width="1" />
+            </svg>
+        </div>
         
         <h1>藏棋平台</h1>
         <div class="version">v1.0</div>
@@ -156,14 +165,21 @@
             <span class="feature-tag">AI对弈</span>
         </div>
         
-        <!-- 下载链接已保留你提供的内容 -->
-        <a href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v1.0/JiuChessBuild.zip" class="download-btn" download>
-            <!-- SVG 格式的下载小图标 -->
-            <svg viewBox="0 0 24 24">
-                <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-            </svg>
-            下载游戏 (Windows)
-        </a>
+        <div class="btn-group">
+            <a href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v1.0/JiuChessBuild.zip" class="download-btn" download>
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                下载日常版 (Windows)
+            </a>
+
+            <a href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v1.0。1/JiuChessAImatch.zip" class="download-btn competition" download>
+                <svg viewBox="0 0 24 24">
+                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
+                </svg>
+                下载赛事版 (Windows)
+            </a>
+        </div>
         
         <div class="footer-text">
             支持 Windows 系统 • 免费
