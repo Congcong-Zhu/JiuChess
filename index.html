@@ -1,190 +1,64 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="zh-CN">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>下载藏棋平台 (JiuChess)</title>
-    <style>
-        /*基础重置*/
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-        
-        /* 页面整体背景与排版 */
-        body {
-            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
-            background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #333;
-        }
-        
-        /* 中央卡片设计 */
-        .card {
-            background: #ffffff;
-            border-radius: 20px;
-            padding: 50px 40px;
-            max-width: 480px;
-            width: 90%;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        /* 标题与版本号 */
-        .logo-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-        }
-        h1 {
-            font-size: 28px;
-            color: #1a202c;
-            margin-bottom: 10px;
-            font-weight: 700;
-        }
-        .version {
-            display: inline-block;
-            background: #edf2f7;
-            color: #4a5568;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 14px;
-            font-weight: 600;
-            margin-bottom: 25px;
-        }
-
-        /* 游戏简介 */
-        p.desc {
-            color: #718096;
-            font-size: 16px;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-        
-        /* 游戏特色标签 */
-        .features {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
-            margin-bottom: 35px;
-        }
-        .feature-tag {
-            background: #ebf8ff;
-            color: #3182ce;
-            font-size: 13px;
-            padding: 6px 14px;
-            border-radius: 6px;
-            font-weight: 500;
-        }
-
-        /* 按钮组容器：让多个按钮上下整齐排列 */
-        .btn-group {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        /* 现代化的下载按钮 (日常体验版 - 绿色) */
-        .download-btn {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            background: linear-gradient(135deg, #2ea44f 0%, #22863a 100%);
-            color: white;
-            text-decoration: none;
-            padding: 16px 32px;
-            border-radius: 12px;
-            font-size: 18px;
-            font-weight: bold;
-            box-shadow: 0 8px 20px rgba(46, 164, 79, 0.3);
-            transition: all 0.3s ease;
-        }
-        
-        .download-btn:hover {
-            background: linear-gradient(135deg, #32b356 0%, #279b43 100%);
-            box-shadow: 0 12px 25px rgba(46, 164, 79, 0.4);
-            transform: translateY(-2px);
-        }
-
-        /* 赛事专用版按钮 (蓝色，突出专业感) */
-        .download-btn.competition {
-            background: linear-gradient(135deg, #3182ce 0%, #2b6cb0 100%);
-            box-shadow: 0 8px 20px rgba(49, 130, 206, 0.3);
-        }
-
-        .download-btn.competition:hover {
-            background: linear-gradient(135deg, #4299e1 0%, #2c5282 100%);
-            box-shadow: 0 12px 25px rgba(49, 130, 206, 0.4);
-        }
-        
-        /* 按钮内部的下载图标 */
-        .download-btn svg {
-            width: 24px;
-            height: 24px;
-            fill: currentColor;
-        }
-
-        /* 底部信息 */
-        .footer-text {
-            margin-top: 25px;
-            font-size: 12px;
-            color: #a0aec0;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#152d45" />
+  <title>藏棋平台 · 下载中心</title>
+  <style>
+    :root { --ink:#142a40; --red:#a8272d; --vermilion:#cd4537; --gold:#e5bd67; --gold-light:#f7df9b; --turquoise:#2d8a88; --paper:#fbf4e4; }
+    * { box-sizing:border-box; margin:0; }
+    body { min-height:100vh; overflow-x:hidden; color:var(--ink); font-family:"Noto Serif SC","Songti SC","Microsoft YaHei",serif; background:#102940; }
+    .page { position:relative; min-height:100vh; display:grid; place-items:center; padding:50px 24px; isolation:isolate; background:radial-gradient(circle at 18% 12%, rgba(65,143,143,.38), transparent 26rem), radial-gradient(circle at 86% 88%, rgba(174,42,47,.42), transparent 30rem), linear-gradient(135deg,#102940,#193b52 48%,#11283d); }
+    .page::before { content:""; position:absolute; inset:17px; z-index:-1; opacity:.62; border:1px solid rgba(229,189,103,.72); background:repeating-linear-gradient(90deg, transparent 0 30px, rgba(229,189,103,.16) 30px 32px), repeating-linear-gradient(0deg, transparent 0 30px, rgba(229,189,103,.12) 30px 32px); mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0); padding:7px; -webkit-mask-composite:xor; mask-composite:exclude; }
+    .cloud { position:absolute; width:350px; height:110px; border-radius:50%; opacity:.1; border:2px solid var(--gold-light); filter:blur(.2px); }
+    .cloud::before,.cloud::after { content:""; position:absolute; border:inherit; border-radius:50%; }
+    .cloud::before { width:130px;height:130px;left:66px;bottom:-19px; } .cloud::after { width:180px;height:180px;left:150px;bottom:-44px; }
+    .cloud.one { top:12%; left:-120px; } .cloud.two { right:-170px; bottom:12%; transform:scale(.75); }
+    .card { width:min(100%, 820px); position:relative; padding:9px; background:linear-gradient(135deg,#f6d98c,#a77528 22%,#f9e3a5 47%,#a77528 75%,#f6d98c); box-shadow:0 28px 70px rgba(0,0,0,.38), 0 0 0 8px rgba(229,189,103,.12); }
+    .card::before,.card::after { content:"✦"; position:absolute; color:#ffe7a6; font-size:23px; line-height:1; top:-15px; } .card::before{left:-14px}.card::after{right:-14px}
+    .card-inner { position:relative; overflow:hidden; padding:clamp(32px,6vw,60px); text-align:center; background:var(--paper); background-image:radial-gradient(rgba(89,57,22,.12) .7px,transparent .7px); background-size:7px 7px; }
+    .card-inner::before { content:""; position:absolute; inset:13px; pointer-events:none; border:2px solid var(--red); outline:1px solid var(--gold); outline-offset:5px; }
+    .header { position:relative; display:grid; justify-items:center; }
+    .eyebrow { color:var(--turquoise); font-family:"Microsoft YaHei",sans-serif; font-size:12px; letter-spacing:.28em; font-weight:700; margin-bottom:8px; }
+    h1 { font-size:clamp(31px,6vw,47px); letter-spacing:.14em; margin-left:.14em; color:var(--ink); line-height:1.2; }
+    .tibetan { margin-top:7px; color:var(--red); letter-spacing:.2em; font-size:15px; font-family:"Noto Sans Tibetan","Microsoft YaHei",sans-serif; }
+    .divider { display:flex; align-items:center; gap:12px; margin:23px auto 19px; color:var(--gold); } .divider::before,.divider::after { content:""; width:95px; height:1px; background:currentColor; } .divider span { font-size:19px; color:var(--red); }
+    .version { display:inline-flex; align-items:center; gap:8px; padding:6px 14px; border:1px solid #d9b96b; color:#79521c; font-family:"Microsoft YaHei",sans-serif; font-weight:700; font-size:12px; letter-spacing:.08em; background:rgba(255,255,255,.46); }
+    .intro { max-width:570px; margin:25px auto 21px; line-height:1.85; font-size:16px; color:#465260; }
+    .features { display:flex; justify-content:center; flex-wrap:wrap; gap:8px; margin-bottom:30px; }
+    .feature { padding:6px 13px; color:#226b6b; border:1px solid rgba(45,138,136,.48); border-radius:999px; font:600 12px "Microsoft YaHei",sans-serif; background:#e7f1ec; }
+    .downloads { display:grid; grid-template-columns:1fr 1fr; gap:14px; max-width:640px; margin:auto; }
+    .download { position:relative; display:flex; align-items:center; justify-content:center; gap:10px; min-height:72px; overflow:hidden; color:#fff; text-decoration:none; background:var(--red); border:1px solid #781c25; box-shadow:inset 0 0 0 3px rgba(255,232,172,.25), 0 7px 14px rgba(107,33,31,.18); font-family:"Microsoft YaHei",sans-serif; font-weight:700; transition:transform .22s,box-shadow .22s,background .22s; }
+    .download::before { content:""; position:absolute; inset:5px; border:1px solid rgba(255,227,151,.7); } .download:hover { transform:translateY(-4px); box-shadow:inset 0 0 0 3px rgba(255,232,172,.25),0 12px 21px rgba(82,23,24,.28); background:var(--vermilion); }
+    .download.alt { background:var(--turquoise); border-color:#17605f; } .download.alt:hover{background:#207b79}.download svg { width:23px; height:23px; fill:currentColor; z-index:1; }.download span{z-index:1}.download small{display:block;font-size:10px;opacity:.75;font-weight:500;margin-top:3px;text-align:left;}
+    .footer { margin-top:23px; color:#77807a; font:12px "Microsoft YaHei",sans-serif; letter-spacing:.08em; }
+    .pieces { display:flex; justify-content:center; align-items:center; gap:12px; margin-top:25px; height:38px; opacity:.9; } .piece { width:29px; height:29px; flex:0 0 29px; border-radius:50%; background:#132a40; border:3px solid #0c1c2c; box-shadow:0 3px 3px #b3a385; }.piece.white { background:#fff9e9; border-color:#d1bd8b; }
+    @media (max-width:580px) { .page{padding:30px 16px}.card-inner{padding:36px 27px}.downloads{grid-template-columns:1fr}.intro{font-size:14px}.page::before{inset:8px}.cloud{display:none} }
+  </style>
 </head>
 <body>
-
-    <div class="card">
-        <div class="logo-icon" style="display: flex; justify-content: center; gap: 10px; align-items: center;">
-            <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="11" fill="#000000" />
-            </svg>
-            <svg width="40" height="40" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="12" cy="12" r="11" fill="#ffffff" stroke="#d1d5db" stroke-width="1" />
-            </svg>
-        </div>
-        
-        <h1>藏棋平台</h1>
-        <div class="version">v1.1</div>
-        
-        <p class="desc">一款基于 Unity3D 与 C# 开发的藏棋平台。</p>
-        
-        <div class="features">
-            <span class="feature-tag">人人对弈</span>
-            <span class="feature-tag">人机对弈</span>
-            <span class="feature-tag">AI对弈</span>
-        </div>
-        
-        <div class="btn-group">
-            <a href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v2.0/JiuChess_newBuild.zip" class="download-btn" download>
-                <svg viewBox="0 0 24 24">
-                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                </svg>
-                下载日常版 (Windows)
-            </a>
-
-            <a href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v1.0.1/JiuChessAImatch.zip" class="download-btn competition" download>
-                <svg viewBox="0 0 24 24">
-                    <path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/>
-                </svg>
-                下载赛事版 (Windows)
-            </a>
-        </div>
-        
-        <div class="footer-text">
-            支持 Windows 系统 • 免费
-        </div>
-    </div>
-
+  <main class="page">
+    <div class="cloud one"></div><div class="cloud two"></div>
+    <section class="card" aria-labelledby="title">
+      <div class="card-inner">
+        <header class="header">
+          <p class="eyebrow">JIUCHESS · DIGITAL TIBETAN CHESS</p>
+          <h1 id="title">藏棋平台</h1>
+          <p class="tibetan">བོད་ཀྱི་རྒྱལ་རྩེད།</p>
+          <div class="divider" aria-hidden="true"><span>✦</span></div>
+          <span class="version">V1.1</span>
+        </header>
+        <p class="intro">以传统藏棋为灵感，在方寸棋盘之间体验智慧交锋。支持本地对弈、人机挑战与 AI 对局，让古老棋艺焕发新的生命力。</p>
+        <div class="features" aria-label="平台功能"><span class="feature">本地双人对弈</span><span class="feature">人机对弈</span><span class="feature">AI 智能对局</span></div>
+        <nav class="downloads" aria-label="下载版本">
+          <a class="download" href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v2.0/JiuChess_newBuild.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg><span>下载日常版<small>Windows · 休闲对弈</small></span></a>
+          <a class="download alt" href="https://github.com/Congcong-Zhu/JiuChess/releases/download/v1.0.1/JiuChessAImatch.zip" download><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg><span>下载赛事版<small>Windows · AI 赛事</small></span></a>
+        </nav>
+        <div class="pieces" aria-hidden="true"><i class="piece white"></i><i class="piece"></i><i class="piece white"></i><i class="piece"></i><i class="piece white"></i></div>
+        <p class="footer">适用于 Windows 系统 · 免费下载使用</p>
+      </div>
+    </section>
+  </main>
 </body>
 </html>
